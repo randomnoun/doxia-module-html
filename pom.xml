@@ -1,0 +1,138 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.randomnoun.maven.doxia</groupId>
+	<artifactId>doxia-module-html</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>org.apache.maven.doxia</groupId>
+		<artifactId>doxia-modules</artifactId>
+		<version>1.4</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.ccil.cowan.tagsoup</groupId>
+			<artifactId>tagsoup</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- for ReaderInputStream 
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>org.apache.maven.doxia</groupId>
+			<artifactId>doxia-module-xhtml</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.doxia</groupId>
+			<artifactId>doxia-core</artifactId>
+			<version>1.4</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+    <scm>
+        <connection>scm:cvs:pserver:anonymous@cvs.randomnoun.com:/randomnoun:doxia-module-html</connection>
+        <developerConnection>scm:cvs:pserver:vmaint@cvs.randomnoun.com:/randomnoun:doxia-module-html</developerConnection>
+        <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/bandcamp-api-client</url>
+    </scm>
+
+	<!-- it's this sort of shit that makes maven such a dream to use -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.plexus
+										</groupId>
+										<artifactId>
+											plexus-component-metadata
+										</artifactId>
+										<versionRange>
+											[1.5.5,)
+										</versionRange>
+										<goals>
+											<goal>generate-metadata</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- these dependencyManagement elements are all necessary because a bunch 
+		of doxia pom.xml's contain "${project.version}" in their dependency elements 
+		(which will be the version of /this/ project, not the project that it was 
+		built against. 
+		
+		See http://svn.apache.org/viewvc/maven/doxia/doxia/tags/doxia-1.4/pom.xml?revision=1471166&view=markup
+    -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.maven.doxia</groupId>
+				<artifactId>doxia-sink-api</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.doxia</groupId>
+				<artifactId>doxia-logging-api</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.doxia</groupId>
+				<artifactId>doxia-core</artifactId>
+				<version>1.4</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>randomnoun releases</name>
+			<url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>randomnoun snapshots</name>
+			<url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
