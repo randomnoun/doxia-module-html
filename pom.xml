@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.randomnoun.maven.doxia</groupId>
 	<artifactId>doxia-module-html</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.apache.maven.doxia</groupId>
@@ -49,6 +49,7 @@
         <connection>scm:cvs:pserver:anonymous@cvs.randomnoun.com:/randomnoun:doxia-module-html</connection>
         <developerConnection>scm:cvs:pserver:vmaint@cvs.randomnoun.com:/randomnoun:doxia-module-html</developerConnection>
         <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/bandcamp-api-client</url>
+    <tag>doxia-module-html-1_0_0</tag>
   </scm>
 
 	<!-- it's this sort of shit that makes maven such a dream to use -->
