@@ -44,7 +44,7 @@ public class HtmlSiteModule
     public static final String FILE_EXTENSION = "html";
 
     /**
-     * Build a new instance of {@link MarkdownSiteModule}.
+     * Build a new instance of {@link HtmlSiteModule}.
      */
     public HtmlSiteModule()
     {

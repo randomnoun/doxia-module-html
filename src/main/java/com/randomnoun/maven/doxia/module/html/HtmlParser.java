@@ -65,7 +65,7 @@ public class HtmlParser
 	/** Clean a HTML inputStream through the tagsoup filter. The returned string is guaranteed to be 
 	 * well-formed XML (and can therefore be used by other tools that expect valid XML). 
 	 * 
-	 * @param is input XML stream
+	 * @param inputStream input XML stream
 	 * @param isHtml if true, uses the HTML schema, omits the XML declaration, and uses the html method
 	 * 
 	 * @throws SAXException if the tagsoup library could not parse the input string
