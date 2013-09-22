@@ -3,7 +3,13 @@
 	<groupId>com.randomnoun.maven.doxia</groupId>
 	<artifactId>doxia-module-html</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <packaging>jar</packaging>
+
+    <description>Doxia module to parse (badly-formed) HTML files as part of maven site documentation</description>
+    <url>http://code.randomnoun.com/doxia-module-html/index.html</url>
+    <name>Doxia HTML module</name>
+    <inceptionYear>2013</inceptionYear>
+
 	<parent>
 		<groupId>org.apache.maven.doxia</groupId>
 		<artifactId>doxia-modules</artifactId>
@@ -18,7 +24,8 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- for ReaderInputStream 
+		<!-- for ReaderInputStream
+		(is now just copied into com.randomnoun.maven.doxia.module.html package directly) 
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -49,12 +56,104 @@
         <connection>scm:cvs:pserver:anonymous@cvs.randomnoun.com:/randomnoun:doxia-module-html</connection>
         <developerConnection>scm:cvs:pserver:vmaint@cvs.randomnoun.com:/randomnoun:doxia-module-html</developerConnection>
         <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/bandcamp-api-client</url>
-  </scm>
+    </scm>
+    <issueManagement>
+        <system>jira</system>
+        <url>http://jira.dev.randomnoun/DOXIAMODULEHTML</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Bamboo</system>
+        <url>http://bamboo.dev.randomnoun:8085/bamboo/browse/RANDOMNOUN-DOXIAMODULEHTML</url>
+    </ciManagement>
+    <licenses>
+        <license>
+            <name>Simplified BSD License</name>
+            <url>http://www.randomnoun.com/licences/bsd-simplified.txt</url>
+            <distribution>repo</distribution>
+            <comments>Simplified BSD License (BSD 2-clause license).</comments>
+        </license>
+    </licenses>    
+    <mailingLists>
+        <mailingList>
+            <name>doxia-module-html Mailing List</name>
+            <subscribe>doxia-module-html-subscribe@lists.randomnoun.com</subscribe>
+            <unsubscribe>doxia-module-html-unsubscribe@lists.randomnoun.com</unsubscribe>
+            <post>doxia-module-html@lists.randomnoun.com</post>
+            <archive>http://lists.randomnoun.com/pipermail/doxia-module-html/</archive>
+        </mailingList>
+        <!-- TODO: a generic announcements / notifications list -->
+    </mailingLists>
+    <organization>
+	    <name>randomnoun</name>
+	    <url>http://www.randomnoun.com</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>knoxg</id>
+            <name>Greg Knox</name>
+            <email>knoxg@randomnoun.com</email>
+            <organization>randomnoun</organization>
+            <organizationUrl>http://www.randomnoun.com</organizationUrl>
+            <roles>
+                <role>Software Gazelle</role>
+            </roles>
+            <timezone>+10</timezone>
+            <properties>
+                <picUrl>http://www.gravatar.com/avatar/10b6f00fa8d70d6f4e042558a9433086.jpg?s=32</picUrl>
+            </properties>
+        </developer>
+    </developers>
+    <contributors>
+    </contributors>
+    <!-- <contributors> <contributor> <name>none yet</name> </contributor> </contributors> -->
 
-	<!-- it's this sort of shit that makes maven such a dream to use -->
+
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+				
+				
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.2</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>lt.velykis.maven.skins</groupId>
+                            <artifactId>reflow-velocity-tools</artifactId>
+                            <version>1.0.0</version>
+                        </dependency>
+                        <!-- Reflow skin requires Velocity >= 1.7 -->
+                        <dependency>
+                            <groupId>org.apache.velocity</groupId>
+                            <artifactId>velocity</artifactId>
+                            <version>1.7</version>
+                        </dependency>
+				        <dependency>
+				            <groupId>org.apache.maven.doxia</groupId>
+				            <artifactId>doxia-module-xhtml</artifactId>
+				            <version>1.4</version>
+				        </dependency>
+                        <dependency>
+                            <!-- add support for ssh/scp -->
+                            <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh</artifactId>
+                            <version>1.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+				
+				
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -94,7 +193,7 @@
 	<!-- these dependencyManagement elements are all necessary because a bunch 
 		of doxia pom.xml's contain "${project.version}" in their dependency elements 
 		(which will be the version of /this/ project, not the project that it was 
-		built against. 
+		built against). 
 		
 		See http://svn.apache.org/viewvc/maven/doxia/doxia/tags/doxia-1.4/pom.xml?revision=1471166&view=markup
     -->
@@ -118,6 +217,94 @@
 		</dependencies>
 	</dependencyManagement>
 
+   <!-- 
+     The performRelease profile is automatically included when performing releases.
+     -->
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <stylesheetfile>${project.basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
+                    <javadocDirectory>${project.basedir}/src/main/javadoc</javadocDirectory>
+                    <docfilessubdirs>true</docfilessubdirs>
+                    <author>true</author>
+                    <linksource>true</linksource>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.16</version>
+                <configuration>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <linkJavadoc>true</linkJavadoc>
+                    <javadocDir>target/site/apidocs</javadocDir>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
+
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
@@ -130,6 +317,12 @@
 			<url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
+		<site>
+            <id>site</id>
+            <name>doxia-module-html Website</name>
+            <!-- this will be externally visible at http://code.randomnoun.com/doxia-module-html -->
+            <url>scp://code.randomnoun.com/var/www/code.randomnoun.com/doxia-module-html/</url>
+        </site>
 	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
