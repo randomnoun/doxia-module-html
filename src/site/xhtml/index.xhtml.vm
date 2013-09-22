@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<!-- this HTML file will be preprocessed by the Velocity template engine, which should replace
+     the project.groupId strings below
+-->
+#set( $repos = "http://central.maven.org/maven2/" )
+#set( $jarBasename = ${project.artifactId} + "-" + ${project.version} + ".jar" )
+#set( $srcBasename = ${project.artifactId} + "-" + ${project.version} + "-sources.jar" )
+#set( $url = ${project.groupId} )
+#set( $url = $url.replace(".", "/") )
+#set( $jarUrl = $repos + $url + "/" + ${project.artifactId} + "/" + ${project.version} + "/" + $jarBasename )
+#set( $srcUrl = $repos + $url + "/" + ${project.artifactId} + "/" + ${project.version} + "/" + $srcBasename )
+
+<h2>Usage</h2>
+
+<p>To use this Maven project, include it in your <a href="http://maven.apache.org/pom.html">project model</a> as 
+a dependency of the standard <code>org.apache.maven.plugins:maven-site-plugin</code> dependency.</p>
+
+<p>HTML site documentation can then be included in your <code>src/site/html</code> folder (with file extension <code>.html</code>).</p>
+
+<pre>
+&lt;project&gt;
+  ...
+  &lt;build&gt;
+    ...
+    &lt;pluginManagement&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          ...
+          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-site-plugin&lt;/artifactId&gt;
+          &lt;version&gt;3.2&lt;/version&gt;
+          &lt;dependencies&gt;
+            ...
+            &lt;dependency&gt;
+              &lt;groupId&gt;com.randomnoun.maven.doxia&lt;/groupId&gt;
+              &lt;artifactId&gt;doxia-module-html&lt;/artifactId&gt;
+              &lt;version&gt;1.0.0&lt;/version&gt;
+            &lt;/dependency&gt;
+            ...
+          &lt;/dependencies&gt;
+        &lt;/plugin&gt;
+        ...
+      &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+    ...
+  &lt;/build&gt;
+  ...
+&lt;/project&gt;        
+</pre>
+
+<h2>Download</h2>
+
+<p>If you're not using maven, you can download the binary and source JARs using these links:</p>
+
+<!-- 
+  Using P element's here because doxia doesn't work well with DIVs. 
+  Can't nest P elements, unfortunately, hence the weird sup/sub element formatting here. 
+-->
+<p class="download-button"><a href="${jarUrl}"><img width="41" height="40" style="margin: 5px; float:left;" src="images/download-arrow.png"></img></a>
+<sup class="big"><a href="${jarUrl}">Download compiled JAR</a></sup>
+<sub class="small"><a href="${jarUrl}">${jarBasename}</a></sub>
+</p>
+
+<p class="download-button"><a href="${srcUrl}"><img width="41" height="40" style="margin: 5px; float:left;" src="images/download-arrow.png"></img></a>
+<sup class="big"><a href="${srcUrl}">Download source JAR</a></sup>
+<sub class="small"><a href="${srcUrl}">${srcBasename}</a></sub>
+</p>
+
+<p>The links above are contained within the <a href="${repos}">maven central repository</a></p>
+
+<hr/>
+</body>
+</html>

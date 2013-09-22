@@ -1,0 +1,29 @@
+<body>
+<style>
+/* the (new) oracle jdk7 javadoc processor puts the overview within a <div style="footer"> block, which breaks LI elements */ 
+UL.bullet LI {
+  font-size: 12px;
+  list-style: disc outside none;
+}  
+</style>
+<p>The <b>doxia-module-html</b> project is <a href="http://maven.apache.org/doxia/modules/" target="top"    >Doxia module</a> for parsing standard HTML files.
+
+<p>This project exists because none of the existing Doxia modules appear to handle standard HTML files,
+instead requiring documentation to be written in strict XHTML, or other markup languages such as 
+APT, FML, Markdown, and TWiki. A list of available formats is given at the 
+<a href="http://maven.apache.org/doxia/references/index.html" target="top">Doxia Markup Languages Reference page</a>.
+
+<p>This module will add support for (possibly malformed) HTML documents; meaning that HTML will be parsed
+in much the same way that a HTML document is parsed by a web browser; i.e. tags such as 
+<code>&lt;p&gt;</code> <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code>
+will be automatically closed.
+
+<p>This module uses the <a href="http://ccil.org/~cowan/XML/tagsoup/" target="top">tagsoup library</a> in order to 
+convert malformed HTML into XHTML before it is parsed by the standard 
+<a href="http://maven.apache.org/doxia/doxia/doxia-sink-api/" target="top">Doxia Sink API</a>. 
+
+<p>In order to use this module, you will need to include it in your project's 
+<code>pom.xml</code> file. See the <a href="http://code.randomnoun.com/doxia-module-html" target="top">site documentation</a> for 
+a description on how to do this. 
+
+</body>
