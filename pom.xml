@@ -55,7 +55,7 @@
     <scm>
         <connection>scm:cvs:pserver:anonymous@cvs.randomnoun.com:/randomnoun:doxia-module-html</connection>
         <developerConnection>scm:cvs:pserver:vmaint@cvs.randomnoun.com:/randomnoun:doxia-module-html</developerConnection>
-        <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/bandcamp-api-client</url>
+        <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/doxia-module-html</url>
   </scm>
     <issueManagement>
         <system>jira</system>
