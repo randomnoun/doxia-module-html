@@ -52,12 +52,11 @@
 
 
 	</dependencies>
-    <scm>
-        <connection>scm:cvs:pserver:anonymous@cvs.randomnoun.com:/randomnoun:doxia-module-html</connection>
-        <developerConnection>scm:cvs:pserver:vmaint@cvs.randomnoun.com:/randomnoun:doxia-module-html</developerConnection>
-        <url>http://cvs.randomnoun.com/cvsweb/cvsweb.cgi/doxia-module-html</url>
-  </scm>
-    <issueManagement>
+<scm>
+	<connection>scm:git:ssh://git@gitlab.dev.randomnoun:2222/randomnoun/doxia-module-html.git</connection>
+	<developerConnection>scm:git:ssh://git@gitlab.dev.randomnoun:2222/randomnoun/doxia-module-html.git</developerConnection>
+	<url>http://gitlab.dev.randomonun/randomnoun/doxia-module-html</url>
+  </scm>    <issueManagement>
         <system>jira</system>
         <url>http://jira.dev.randomnoun/DOXIAMODULEHTML</url>
     </issueManagement>
@@ -309,12 +308,12 @@
 		<repository>
 			<id>releases</id>
 			<name>randomnoun releases</name>
-			<url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/releases/</url>
+			<url>http://nexus2.dev.randomnoun:8082/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>randomnoun snapshots</name>
-			<url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
+			<url>http://nexus2.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 		<site>
