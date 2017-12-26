@@ -56,7 +56,8 @@
 	<connection>scm:git:ssh://git@gitlab.dev.randomnoun:2222/randomnoun/doxia-module-html.git</connection>
 	<developerConnection>scm:git:ssh://git@gitlab.dev.randomnoun:2222/randomnoun/doxia-module-html.git</developerConnection>
 	<url>http://gitlab.dev.randomonun/randomnoun/doxia-module-html</url>
-  </scm>    <issueManagement>
+  </scm>    
+  <issueManagement>
         <system>jira</system>
         <url>http://jira.dev.randomnoun/DOXIAMODULEHTML</url>
     </issueManagement>
