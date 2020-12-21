@@ -139,7 +139,7 @@
                     </dependencies>
                 </plugin>
                 
-                <plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>3.2.0</version>
@@ -148,6 +148,7 @@
 					  configuration for the reports is in the <reporting> section  
 					-->
 					<configuration>
+						<source>1.6</source>
 	                	<additionalparam>-Xdoclint:none</additionalparam>
 	                	<failOnError>false</failOnError>
 						<javadocDirectory>${project.basedir}/src/main/javadoc</javadocDirectory>
@@ -293,6 +294,7 @@
 				  configuration for the javadoc artifact is in the <pluginManagement> section  
 				-->
 				<configuration>
+					<source>1.6</source>
                 	<additionalparam>-Xdoclint:none</additionalparam>
                 	<failOnError>false</failOnError>
 					<javadocDirectory>${project.basedir}/src/main/javadoc</javadocDirectory>
