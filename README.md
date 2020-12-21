@@ -2,7 +2,7 @@
 
 # doxia-module-html
 
-**doxia-module-html** allows you to use HTML as a source for your maven-generated site documentation
+**doxia-module-html** allows you to use HTML files as a source for your maven-generated site documentation
 
 HTML being a file format which has been somehow overlooked by the maven steering committee in favour of more common documentation file formats such as LaT<sub>E</sub>X, iText, FML, FO, RTF, markdown and TWiki. 
 
