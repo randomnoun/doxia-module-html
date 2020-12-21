@@ -16,7 +16,7 @@ You know, this one.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Valid_XHTML_1.0.svg" width="120">
 
-Admittedly, you're still restricted to the subset of HTML that the maven developers decided to support in doxia, but that's still a hell of a lot better than the alternatives, IMO.
+Admittedly, you're still restricted to the subset of HTML that the maven developers decided to support in doxia, because, you know, DOMs don't just reinvent themselves, but that's still a hell of a lot better than the alternatives, IMO.
 
 ## Overview
 
