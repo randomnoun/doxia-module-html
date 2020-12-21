@@ -38,7 +38,7 @@ Add it to the 'dependencies' list of your **maven-site-plugin** (i.e. **not** th
 		  <dependency>
 			<groupId>com.randomnoun.maven.doxia</groupId>
 			<artifactId>doxia-module-html</artifactId>
-			<version>1.1.0</version>
+			<version>1.1.3</version>
 		  </dependency>
 		</dependencies>
 	  </plugin>
