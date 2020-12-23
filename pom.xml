@@ -354,6 +354,11 @@
 	        <url>http://nexus2.dev.randomnoun/nexus/content/repositories/snapshots/</url>
 	        <uniqueVersion>false</uniqueVersion>
 	    </snapshotRepository>
+	    <site>
+        	<id>gh-pages</id>
+        	<name>doxia-module-html Website</name>
+	        <url>git:http://gitlab.dev.randomnoun/randomnoun/doxia-module-html.git?gh-pages#</url>
+    	</site>
 	</distributionManagement>
 
 	<properties>
