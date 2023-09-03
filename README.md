@@ -1,4 +1,4 @@
-
+[![Maven Central](https://img.shields.io/maven-central/v/com.randomnoun.maven.doxia/doxia-module-html.svg)](https://search.maven.org/artifact/com.randomnoun.maven.doxia/doxia-module-html)
 
 # doxia-module-html
 
