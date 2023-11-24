@@ -105,9 +105,9 @@
 
   <body>
     <!-- Add a rel to Google profile for all pages -->
-    <head>
+    <head><![CDATA[
       <link rel="author" href="mailto:knoxg@randomnoun.com"/>
-    </head>
+    ]]></head>
   
     <links>
       <item name="Download" href="index.html#Usage" />
